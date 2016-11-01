@@ -3,11 +3,8 @@
 //     Copyright (c) AudioSharp. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace SoundSharp.Core
+namespace AudioSharp.Core
 {
-    using System;
-    using System.Windows;
-
     using NAudio.CoreAudioApi;
 
     public class MuteAction : SoundActionBase
@@ -19,20 +16,7 @@ namespace SoundSharp.Core
 
         public override void Callback(MMDevice device, string parameter = null)
         {
-            try
-            {
-                device.AudioEndpointVolume.Mute = !device.AudioEndpointVolume.Mute;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(
-                    e.Message,
-                    "Error",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error,
-                    MessageBoxResult.OK,
-                    MessageBoxOptions.DefaultDesktopOnly);
-            }
+            device.AudioEndpointVolume.Mute = !device.AudioEndpointVolume.Mute;
         }
     }
 }

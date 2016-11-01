@@ -3,10 +3,9 @@
 //     Copyright (c) AudioSharp. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace SoundSharp.Core
+namespace AudioSharp.Core
 {
     using System;
-    using System.Windows;
 
     using NAudio.CoreAudioApi;
 
@@ -19,26 +18,13 @@ namespace SoundSharp.Core
 
         public override void Callback(MMDevice device, string parameter = null)
         {
-            try
+            if (parameter == null)
             {
-                if (parameter == null)
-                {
-                    throw new ArgumentNullException(nameof(parameter));
-                }
+                throw new ArgumentNullException(nameof(parameter));
+            }
 
-                var volume = float.Parse(parameter) / 100f;
-                device.AudioEndpointVolume.MasterVolumeLevelScalar = volume;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(
-                    e.Message,
-                    "Error",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error,
-                    MessageBoxResult.OK,
-                    MessageBoxOptions.DefaultDesktopOnly);
-            }
+            var volume = float.Parse(parameter) / 100f;
+            device.AudioEndpointVolume.MasterVolumeLevelScalar = volume;
         }
     }
 }

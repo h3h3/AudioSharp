@@ -9,14 +9,13 @@ namespace AudioSharp.Hotkeys
     using System.Collections.Generic;
     using System.Runtime.InteropServices;
     using System.Runtime.Serialization;
+    using System.Windows;
     using System.Windows.Input;
     using System.Windows.Interop;
 
     using AudioSharp.Core;
 
     using Newtonsoft.Json;
-
-    using SoundSharp.Core;
 
     public class HotKey : NotifyBase, IDisposable
     {
@@ -216,7 +215,21 @@ namespace AudioSharp.Hotkeys
 
                     if (dictHotKeyToCalBackProc.TryGetValue((int)msg.wParam, out hotKey))
                     {
-                        hotKey.Action?.Callback(MainWindow.Instance.Device, hotKey.Parameter);
+                        try
+                        {
+                            hotKey.Action?.Callback(MainWindow.Instance.Device, hotKey.Parameter);
+                        }
+                        catch (Exception e)
+                        {
+                            MessageBox.Show(
+                                e.Message,
+                                "Error",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error,
+                                MessageBoxResult.OK,
+                                MessageBoxOptions.DefaultDesktopOnly);
+                        }
+
                         handled = true;
                     }
                 }

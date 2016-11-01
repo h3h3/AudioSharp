@@ -8,8 +8,6 @@ namespace AudioSharp.Core
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
 
-    using SoundSharp.Core;
-
     public class NotifyBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;

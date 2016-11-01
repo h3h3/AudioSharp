@@ -3,7 +3,7 @@
 //     Copyright (c) AudioSharp. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace SoundSharp.Core
+namespace AudioSharp.Core
 {
     using System;
 

@@ -7,8 +7,8 @@
     <ProjectGuid>{98ACED28-7892-4FAF-8164-F9E07D7DAC6C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SoundSharp.Core</RootNamespace>
-    <AssemblyName>SoundSharp.Core</AssemblyName>
+    <RootNamespace>AudioSharp.Core</RootNamespace>
+    <AssemblyName>AudioSharp.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -38,7 +38,6 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />

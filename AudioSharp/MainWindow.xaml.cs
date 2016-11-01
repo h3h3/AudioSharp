@@ -14,19 +14,17 @@ namespace AudioSharp
     using System.Drawing;
     using System.IO;
     using System.Linq;
-    using System.Reflection;
     using System.Runtime.CompilerServices;
     using System.Windows;
     using System.Windows.Forms;
     using System.Windows.Input;
 
+    using AudioSharp.Core;
     using AudioSharp.Hotkeys;
 
     using NAudio.CoreAudioApi;
 
     using Newtonsoft.Json;
-
-    using SoundSharp.Core;
 
     using Application = System.Windows.Application;
 
@@ -251,7 +249,7 @@ namespace AudioSharp
                     this.HotKeys = new ObservableCollection<HotKey>(JsonConvert.DeserializeObject<HotKey[]>(data));
                 }
             }
-            catch 
+            catch
             {
                 File.Delete("config.json");
                 this.HotKeys = new ObservableCollection<HotKey>();

@@ -98,7 +98,7 @@
     <Resource Include="Resources\icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SoundSharp.Core\SoundSharp.Core.csproj">
+    <ProjectReference Include="..\AudioSharp.Core\AudioSharp.Core.csproj">
       <Project>{98aced28-7892-4faf-8164-f9e07d7dac6c}</Project>
       <Name>SoundSharp.Core</Name>
     </ProjectReference>

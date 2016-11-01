@@ -11,7 +11,7 @@
 // ReSharper disable IntroduceOptionalParameters.Global
 // ReSharper disable MemberCanBeProtected.Global
 // ReSharper disable InconsistentNaming
-namespace SoundSharp.Core
+namespace AudioSharp.Core
 {
     using System;
 

@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioSharp", "AudioSharp\AudioSharp.csproj", "{33D0E1F7-5301-42F9-ABDE-7294B0748DBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundSharp.Core", "SoundSharp.Core\SoundSharp.Core.csproj", "{98ACED28-7892-4FAF-8164-F9E07D7DAC6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioSharp.Core", "AudioSharp.Core\AudioSharp.Core.csproj", "{98ACED28-7892-4FAF-8164-F9E07D7DAC6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
