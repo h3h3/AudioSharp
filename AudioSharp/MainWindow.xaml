@@ -1,0 +1,95 @@
+﻿<Window x:Class="AudioSharp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:coreAudioApi="clr-namespace:NAudio.CoreAudioApi;assembly=NAudio"
+        xmlns:converters="clr-namespace:AudioSharp.Converters"
+        mc:Ignorable="d"
+        Title="Sound#" Height="350" Width="500" MinHeight="350" MinWidth="500" Icon="Resources/icon.ico">
+
+    <Window.Resources>
+        <converters:HabeasIcon x:Key="IconConverter" />
+        <converters:KeyConverter x:Key="KeyConverter" />
+
+        <DataTemplate x:Key="HotkeyTemplate" DataType="{x:Type Key}">
+            <TextBlock Text="{Binding}" />
+        </DataTemplate>
+
+        <DataTemplate x:Key="DeviceTemplate" DataType="{x:Type coreAudioApi:MMDevice}">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="{Binding IconPath, Converter={StaticResource IconConverter}}" Margin="0,0,10,0" />
+                <TextBlock Text="{Binding FriendlyName}" />
+            </StackPanel>
+        </DataTemplate>
+
+    </Window.Resources>
+
+    <Grid>
+        <DockPanel Margin="10,10,10,0" Height="25" VerticalAlignment="Top">
+            <Label x:Name="DevicesText" Content="Device" VerticalAlignment="Center" Margin="0,0,10,0" />
+            <ComboBox SelectedItem="{Binding Device}" ItemsSource="{Binding Devices}"
+                      ItemTemplate="{StaticResource DeviceTemplate}" DockPanel.Dock="Right" />
+        </DockPanel>
+
+        <DataGrid ItemsSource="{Binding HotKeys}" SelectedItem="{Binding HotKey}" Margin="10,48,10,141"
+                  RowHeaderWidth="0" AutoGenerateColumns="False" CanUserReorderColumns="False"
+                  CanUserResizeColumns="False" CanUserSortColumns="False" CanUserResizeRows="False"
+                  CanUserAddRows="False">
+
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="New" Click="New_OnClick" />
+                    <MenuItem Header="Delete" Click="Delete_OnClick" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="100" />
+                <DataGridTextColumn Header="Key" Binding="{Binding Key, Converter={StaticResource KeyConverter}}"
+                                    Width="60" />
+                <DataGridTextColumn Header="Modifier" Binding="{Binding KeyModifiers}" Width="60" />
+                <DataGridTextColumn Header="Action" Binding="{Binding Action}" Width="*" />
+                <DataGridTextColumn Header="Args" Binding="{Binding Parameter}" Width="60" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DockPanel Margin="10,0,10,10" Height="126" VerticalAlignment="Bottom" DataContext="{Binding HotKey}">
+            <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Height="119">
+                <DockPanel Height="25" Margin="0,0,0,5">
+                    <Label Content="Name" VerticalAlignment="Center" Margin="0,0,10,0" MinWidth="60" />
+                    <TextBox Text="{Binding Name}" VerticalContentAlignment="Center" />
+                </DockPanel>
+
+                <DockPanel Height="25" Margin="0,0,0,5">
+                    <Label Content="Key" VerticalAlignment="Center" Margin="0,0,10,0" MinWidth="60" />
+                    <ComboBox x:Name="Keys" SelectedItem="{Binding Key}" DockPanel.Dock="Right" SelectedIndex="0" />
+                </DockPanel>
+
+                <DockPanel Height="25" Margin="0,0,0,5">
+                    <Label Content="Modifiers" VerticalAlignment="Center" Margin="0,0,10,0" MinWidth="60" />
+                    <ComboBox x:Name="Modifiers" SelectedItem="{Binding KeyModifiers}" DockPanel.Dock="Right"
+                              SelectedIndex="0" />
+                </DockPanel>
+
+                <DockPanel Height="25" Margin="0,0,0,0">
+                    <Label Content="Action" VerticalAlignment="Center" Margin="0,0,10,0" MinWidth="60" />
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+
+                        <ComboBox Grid.Column="0" x:Name="Actions" SelectedItem="{Binding Action}" SelectedIndex="0"
+                                  Margin="0,0,10,0" />
+                        <TextBox Grid.Column="1" Text="{Binding Parameter}" VerticalContentAlignment="Center"
+                                 HorizontalContentAlignment="Center" />
+                    </Grid>
+                </DockPanel>
+            </StackPanel>
+        </DockPanel>
+
+
+    </Grid>
+</Window>
