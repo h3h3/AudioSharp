@@ -257,11 +257,16 @@ namespace AudioSharp
 
             this.Devices = new ObservableCollection<MMDevice>(GetDevices());
             this.Keys.ItemsSource = new ObservableCollection<Key>((Key[])Enum.GetValues(typeof(Key)));
-            this.Modifiers.ItemsSource =
-                new ObservableCollection<KeyModifier>((KeyModifier[])Enum.GetValues(typeof(KeyModifier)));
+            this.Modifiers.ItemsSource = new ObservableCollection<KeyModifier>((KeyModifier[])Enum.GetValues(typeof(KeyModifier)));
             this.Actions.ItemsSource = new ObservableCollection<ISoundAction>(this.ImportedActions);
 
             this.Device = this.Devices.FirstOrDefault(d => d.ID == GetDefaultDevice()?.ID);
+
+            var cmd = Environment.GetCommandLineArgs();
+            if (cmd.Length == 2 && cmd[1] == "/hide")
+            {
+                this.Hide();
+            }
         }
     }
 }
